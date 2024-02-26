@@ -13,7 +13,7 @@ Router.post('/upload/:role_id' ,upload.single('file') , verifyToken , uploadImag
 
 
 
-Router.get('/info',verifyToken  ,getAllBlog);
+Router.get('/info'  ,getAllBlog);
 Router.delete('/delete/:id',  verifyToken, deleteBlogById )
 // Router.post('/create' , postBlog);
 // Router.put('/update',updateBlog);
