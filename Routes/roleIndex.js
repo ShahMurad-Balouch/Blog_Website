@@ -6,7 +6,6 @@ const router = express.Router();
 const {createRole , getuserRole} = require('../Controllers/roleController');
 
 router.post('/createrole' , createRole);
-
-router.get('/getrole/:id' , getuserRole)
+router.get('/:id/getrole' , getuserRole)
 
 module.exports = router;

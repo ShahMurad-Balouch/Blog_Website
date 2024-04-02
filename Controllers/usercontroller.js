@@ -138,7 +138,6 @@ exports.logoutUser =async (req,res) => {
     }
 }
 
-
 // Deactivat the user
 exports.deactivate = async(req,res) => {
     const {id} = req.params;

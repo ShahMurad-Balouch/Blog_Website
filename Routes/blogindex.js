@@ -9,9 +9,6 @@ const Router = express.Router();
 
 Router.post('/:role_id/upload' ,upload.single('file') , verifyToken , uploadImage);
 
-
-
-
 Router.get('/info',verifyToken  ,getAllBlog);
 Router.delete('/:id/delete',  verifyToken, deleteBlogById )
 // Router.post('/create' , postBlog);

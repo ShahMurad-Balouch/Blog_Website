@@ -27,5 +27,4 @@ const checkPermission = async (req, res, next) => {
   }
 };
 
-
 module.exports = checkPermission;

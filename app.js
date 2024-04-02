@@ -12,8 +12,6 @@ app.use(express.urlencoded({extended:true}))
 app.use(express.json());
 require('dotenv').config()
 
-
-
 // this is the access 
 app.use(express.static(path.join(__dirname, './uploads/')))
 

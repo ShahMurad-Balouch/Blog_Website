@@ -28,11 +28,8 @@ const roleSchema = new mongoose.Schema({
         type: Boolean,
         default: false
 }
- }
+}
 ]
-
-
-
 });
 
 const Role = mongoose.model("Role", roleSchema);

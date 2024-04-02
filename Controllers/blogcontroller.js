@@ -10,9 +10,7 @@ exports.uploadImage = async(req, res)=>{
 console.log({"permissions.userid" : role_id })
   try {
     // Find the user's role and permissions using Mongoose methods
-//     const role = await Role.find({ 'permissions.userid': user_id,
-// "permissions.create" : true });
-// console.log(role)
+
 
 const roles = await Role.find(
     {}, {
@@ -29,16 +27,6 @@ const roles = await Role.find(
  
 
 
-
-// Find the first object with create field set to true
-// const roleWithCreateTrue = roles.find(role => role.permissions.user_id && role.permissions[0].create);
-// console.log(roleWithCreateTrue)
-
-// const roleWithCreateTrue = roles.find(role => 
-//     role.permissions.some(permission => permission.userid == role_id && permission.create)
-//   );
-  
-//   console.log(roleWithCreateTrue);
   
 if (roles?.permissions) {
         const newp = await blogmodel.create(req.body)
@@ -54,19 +42,6 @@ if (roles?.permissions) {
 }
 
 
-// get the images
-
-// exports.getImage = async(req, res) => {
-//   const filename = req.params.filename;
-//   const filePath = path.join(__dirname, 'uploads', filename);
-
-//   res.sendFile(filePath, (err) => {
-//     if (err) {
-//       console.error('Error sending file:', err);
-//       res.status(500).send('Internal Server Error');
-//     }
-//   });
-// };
 
 
 
@@ -75,16 +50,6 @@ if (roles?.permissions) {
 // CRUD Operation 
 
 // Create a data and add in the mongodb
-
-// exports.postBlog = async(req,res) => {
-//     const{ title , content } = req.body;
-// try {
-//     const newPost = await blogmodel.create({title , content})
-//     res.json(newPost)
-// } catch (error) {
-//     res.status(500).send(error)
-// }
-// }
 
 // Get method
 exports.getAllBlog = async(req,res) => {
