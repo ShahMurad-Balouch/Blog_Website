@@ -4,21 +4,32 @@ const blogmodel = require('../models/blogmodel');
 exports.uploadImage = async(req, res)=>{
   const{ title , content , description , createdAt} = req.body;
   const file = req.file ? req.file.path : null;
-//   const {user_id} = req.body
-    // Assuming roleIds is an array of role IDs associated with the blog post
   console.log(file)
+  
   const {role_id} = req.params; // Replace with the actual user ID
-console.log({"permissions.userid" : role_id} )
+console.log({"permissions.userid" : role_id })
   try {
     // Find the user's role and permissions using Mongoose methods
 //     const role = await Role.find({ 'permissions.userid': user_id,
 // "permissions.create" : true });
 // console.log(role)
 
-const roles = await Role.findOne({
-    "permissions.userid": role_id,
-  });
+const roles = await Role.find(
+    {}, {
+    permissions : { $elemMatch : {
+        userid : role_id,
+        create : true,
+    }
+  }
+}
+);
+
   console.log(roles);
+
+ 
+
+
+
 // Find the first object with create field set to true
 // const roleWithCreateTrue = roles.find(role => role.permissions.user_id && role.permissions[0].create);
 // console.log(roleWithCreateTrue)
@@ -29,7 +40,7 @@ const roles = await Role.findOne({
   
 //   console.log(roleWithCreateTrue);
   
-if (roles) {
+if (roles?.permissions) {
         const newp = await blogmodel.create(req.body)
         return res.json(newp)
 }

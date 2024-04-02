@@ -1,8 +1,6 @@
 const mongoose = require('mongoose');
 
 const roleSchema = new mongoose.Schema({
- 
-
   admin: {
     type: Boolean,
     default: false
@@ -21,10 +19,11 @@ const roleSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
-    remove: {
+    remoove: {
         type: Boolean,
         default: false
     },
+
     read: {
         type: Boolean,
         default: false

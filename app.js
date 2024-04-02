@@ -4,14 +4,13 @@ const userrouter = require('./Routes/userindex')
 const blogrouter = require('./Routes/blogindex')
 const rolerouter = require('./Routes/roleIndex')
 const mongoose = require('mongoose');
-// const cookie = require('cookie-parser');
 
 const cors = require('cors');
 const app = express();
-// app.use(cookie());
 
 app.use(express.urlencoded({extended:true}))
 app.use(express.json());
+require('dotenv').config()
 
 
 
@@ -41,17 +40,21 @@ app.use('/user' , userrouter)
 app.use('/blog' , blogrouter)
 app.use('/role' , rolerouter)
 
-const uri = `mongodb+srv://admin:admin@atlascluster.5wzpbvn.mongodb.net/webblog?retryWrites=true&w=majority`;
+
+
+
+const user = process.env.MONGO_USER || "qwerty";
+const password = process.env.MONGO_PASSWORD || "qwerty";
+
+const uri = `mongodb+srv://${user}:${password}@atlascluster.5wzpbvn.mongodb.net/webblog?retryWrites=true&w=majority`;
 
 const connect = mongoose.connect(uri)
 .then(()=>console.log("Connected to MongoDb"))
 
-module.exports = connect;
+const port = process.env.PORT || '2000';
 
-
-
-app.listen(8000 , () => {
-    console.log('listening to port 8000')
+app.listen(port , () => {
+    console.log(`listening to port ${port}`)
 })
 
 

@@ -9,7 +9,7 @@ const schema = mongoose.Schema({
         default: Date.now,
     },
     user_id :  {
-    type : mongoose.Schema.Types.ObjectId,   
+    type : mongoose.Schema.Types.ObjectId,  
     ref : "User",
     },
     role_id : {
